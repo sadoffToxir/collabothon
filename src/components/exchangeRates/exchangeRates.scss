@@ -1,0 +1,35 @@
+@import "@styles/_variables.scss";
+
+.exchangeRates {
+  display: flex;
+  flex-direction: column;
+  background-color: $bg-primary;
+  border-radius: 16px;
+  padding: 16px;
+  width: 320px;
+  height: 240px;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+
+    .exchangeRates__select {
+      font-size: 18px;
+      font-weight: bold;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+    }
+
+    &__rate {
+      font-size: 16px;
+      color: #555;
+    }
+  }
+
+  &__chart {
+    flex: 1 1 auto;
+  }
+}

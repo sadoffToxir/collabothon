@@ -10,6 +10,7 @@ import BalanceDashboard from '@components/balanceDashboard/balanceDashboard';
 import { theme } from '@plugins/antDesign';
 
 import './App.css';
+import ExchangeRates from '@components/exchangeRates/exchangeRates';
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
                     <QuickAccess />
                     <NewFeaturesWidget />
                     <BalanceDashboard />
+                    <ExchangeRates />
           </DefaultLayout>
                 </div>
               }
