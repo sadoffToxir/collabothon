@@ -26,7 +26,7 @@ export default tseslint.config(
         { allowConstantExport: true },
       ],
       'react/react-in-jsx-scope': 'off', 
-    'indent': ['error', 2],
+      'indent': ['error', 2],
       'no-multi-spaces': 'error',
       'object-curly-spacing': ['error', 'always'],
       'array-bracket-spacing': ['error', 'never'],

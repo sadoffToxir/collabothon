@@ -7,22 +7,24 @@
 	height: 500px;
 	background-color: $bg-primary;
 	border-radius: 8px;
-	padding: 0 2px 2px;
+	padding: 16px;
 
 	&__heading {
-		text-align: center;
+		font-weight: 700;
 		padding: 10px 0;
 		margin: 0;
 	}
 
 	&__items {
-		background-color: #fafafa;
 		border-radius: 0 0 8px 8px;
 		height: 100%;
 		overflow: scroll;
+		position: relative;
 
 		& > .ant-collapse {
+			background-color: transparent !important;
 			border-radius: 0;
+			border: none;
 		}
 
 		& > .ant-collapse-item {
