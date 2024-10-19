@@ -9,7 +9,7 @@ const NewFeaturesWidget = () => {
         <img src={serviceIcon} alt="Service Icon" className="w-20 h-20 mb-4" />
       </div>
       <div className="flex-1 p-4">
-        <h3 className="text-3xl mb-4 text-gray-900 font-semibold">How to make your Mac work smarter</h3>
+        <h3 className="text-3xl mb-4 text-gray-900 font-semibold">How toasds make your Mac work smarter</h3>
         <p className="text-gray-700 text-lg">
           Learn how to use these simple tips and tricks to enhance your productivity and get the most out of your Mac. Discover shortcuts, useful features, and more to make your experience seamless. <a href='' className='text-blue-600 underline'>Read More.</a>
         </p>

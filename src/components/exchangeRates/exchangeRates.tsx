@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import {
-  LineChart,
-  Line,
+  AreaChart,
+  Area,
   XAxis,
   YAxis,
   Tooltip,
@@ -17,6 +17,16 @@ interface ExchangeRateData {
 const ExchangeRates: React.FC = () => {
   // Currency options
   const currencies = ['USD', 'EUR', 'GBP', 'JPY', 'AUD', 'CAD'];
+
+  // Currency symbols
+  const currencySymbols: Record<string, string> = {
+    USD: '$',
+    EUR: '€',
+    GBP: '£',
+    JPY: '¥',
+    AUD: 'A$',
+    CAD: 'C$',
+  };
 
   // State variables
   const [fromCurrency, setFromCurrency] = useState<string>('EUR');
@@ -43,19 +53,28 @@ const ExchangeRates: React.FC = () => {
   };
 
   // Mock function to get exchange rate
-  const getMockExchangeRate = (from: string, to: string): number => {
-    const baseRates: Record<string, number> = {
-      USD: 1.0,
-      EUR: 0.9,
-      GBP: 0.8,
-      JPY: 110.0,
-      AUD: 1.4,
-      CAD: 1.3,
-    };
-    const fromRate = baseRates[from];
-    const toRate = baseRates[to];
-    return toRate / fromRate;
+const getMockExchangeRate = (from: string, to: string): number => {
+  const baseRates: Record<string, number> = {
+    USD: 1.0,
+    EUR: 0.9,
+    GBP: 0.8,
+    JPY: 110.0,
+    AUD: 1.4,
+    CAD: 1.3,
   };
+  const fromRate = baseRates[from];
+  const toRate = baseRates[to];
+  const exchangeRate = toRate / fromRate;
+  return exchangeRate;
+};
+
+// Function to get the exchange rate with fluctuation
+const getExchangeRateWithFluctuation = (from: string, to: string): JSX.Element => {
+  const baseRate = getMockExchangeRate(from, to);
+  const fluctuation = Math.random() * 0.1 - 0.05; // Random fluctuation between -0.05 and 0.05
+  const finalRate = baseRate + fluctuation;
+  return <span style={{ fontWeight: 'bold' }}>{finalRate.toFixed(2)}</span>;
+};
 
   // Handle currency selection change
   const handleFromCurrencyChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -73,11 +92,11 @@ const ExchangeRates: React.FC = () => {
   const latestRate = chartData[chartData.length - 1]?.rate || 0;
 
   return (
-    <div className="exchangeRates">
-      <div className="exchangeRates__header">
-        <div className="exchangeRates__selector">
+    <div className="exchangeRates-widget">
+      <div className="exchangeRates-widget__header">
+        <div className="exchangeRates-widget__selector">
           <select
-            className="exchangeRates__select"
+            className="balanceDashboard__controls__select"
             value={fromCurrency}
             onChange={handleFromCurrencyChange}
           >
@@ -87,9 +106,9 @@ const ExchangeRates: React.FC = () => {
               </option>
             ))}
           </select>
-          <span className="exchangeRates__separator">/</span>
+          <span className="exchangeRates-widget__separator">/</span>
           <select
-            className="exchangeRates__select"
+            className="balanceDashboard__controls__select"
             value={toCurrency}
             onChange={handleToCurrencyChange}
           >
@@ -100,33 +119,41 @@ const ExchangeRates: React.FC = () => {
             ))}
           </select>
         </div>
-        <div className="exchangeRates__rate">{latestRate.toFixed(4)}</div>
+        <div className="exchangeRates-widget__rate">
+          <span style={{ fontWeight: 'bold' }}>{currencySymbols[toCurrency]}{latestRate.toFixed(4)}</span>
+        </div>
       </div>
 
       {/* Chart */}
-      <div className="exchangeRates__chart">
+      <div className="exchangeRates-widget__chart">
         <ResponsiveContainer width="100%" height={150}>
-          <LineChart data={chartData}>
+          <AreaChart data={chartData}>
+            <defs>
+              <linearGradient id="colorRate" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stopColor="#34C759" stopOpacity={0.8} />
+                <stop offset="100%" stopColor="#34C759" stopOpacity={0} />
+              </linearGradient>
+            </defs>
             <XAxis dataKey="date" hide />
             <YAxis domain={['dataMin - 0.01', 'dataMax + 0.01']} hide />
             <Tooltip
               contentStyle={{
-                backgroundColor: '#fff',
-                borderRadius: '5px',
-                border: '1px solid #ccc',
-                fontSize: '12px',
+                backgroundColor: 'rgba(255, 255, 255, 0.9)',
+                borderRadius: '10px',
+                border: 'none',
+                boxShadow: '0 2px 8px rgba(0, 0, 0, 0.15)',
               }}
               labelFormatter={(label) => `Date: ${label}`}
               formatter={(value: number) => [`${value.toFixed(4)}`, 'Rate']}
             />
-            <Line
+            <Area
               type="monotone"
               dataKey="rate"
               stroke="#34C759"
+              fill="url(#colorRate)"
               strokeWidth={2}
-              dot={false}
             />
-          </LineChart>
+          </AreaChart>
         </ResponsiveContainer>
       </div>
     </div>

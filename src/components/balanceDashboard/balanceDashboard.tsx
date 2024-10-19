@@ -138,156 +138,156 @@ const BalanceDashboard: React.FC = () => {
     },
   };
 
-// State and data logic remain the same
-const [selectedPeriod, setSelectedPeriod] = useState<Period>('7d');
-const [selectedAsset, setSelectedAsset] = useState<AssetType>('All Assets');
-const chartData = data[selectedAsset][selectedPeriod];
-const currentBalance = data[selectedAsset]['7d'].find(
-  (item) => item.date === 'Oct 19'
-)?.balance;
-const startingBalance = chartData[0].balance;
-const totalPnL =
-  currentBalance !== undefined ? currentBalance - startingBalance : 0;
+  // State and data logic remain the same
+  const [selectedPeriod, setSelectedPeriod] = useState<Period>('7d');
+  const [selectedAsset, setSelectedAsset] = useState<AssetType>('All Assets');
+  const chartData = data[selectedAsset][selectedPeriod];
+  const currentBalance = data[selectedAsset]['7d'].find(
+    (item) => item.date === 'Oct 19'
+  )?.balance;
+  const startingBalance = chartData[0].balance;
+  const totalPnL =
+    currentBalance !== undefined ? currentBalance - startingBalance : 0;
 
-const formatCurrency = (value: number): string => {
-  const formatted = `$${Math.abs(value).toLocaleString(undefined, {
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 2,
-  })}`;
-  return value >= 0 ? formatted : `-${formatted}`;
-};
+  const formatCurrency = (value: number): string => {
+    const formatted = `$${Math.abs(value).toLocaleString(undefined, {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+    })}`;
+    return value >= 0 ? formatted : `-${formatted}`;
+  };
 
-const handlePeriodSwitch = (period: Period) => {
-  setSelectedPeriod(period);
-};
+  const handlePeriodSwitch = (period: Period) => {
+    setSelectedPeriod(period);
+  };
 
-const handleAssetChange = (
-  event: React.ChangeEvent<HTMLSelectElement>
-) => {
-  const asset = event.target.value as AssetType;
-  setSelectedAsset(asset);
-};
+  const handleAssetChange = (
+    event: React.ChangeEvent<HTMLSelectElement>
+  ) => {
+    const asset = event.target.value as AssetType;
+    setSelectedAsset(asset);
+  };
 
-// Calculate min and max balance for Y-axis domain
-const balanceValues = chartData.map((data) => data.balance);
-const minBalance = Math.min(...balanceValues);
-const maxBalance = Math.max(...balanceValues);
-const midBalance = (minBalance + maxBalance) / 2;
-const dataRange = maxBalance - minBalance;
+  // Calculate min and max balance for Y-axis domain
+  const balanceValues = chartData.map((data) => data.balance);
+  const minBalance = Math.min(...balanceValues);
+  const maxBalance = Math.max(...balanceValues);
+  const midBalance = (minBalance + maxBalance) / 2;
+  const dataRange = maxBalance - minBalance;
 
-// Add padding to the domain to center the chart line
-const yAxisMin = midBalance - dataRange * 1.5;
-const yAxisMax = midBalance + dataRange * 1.5;
+  // Add padding to the domain to center the chart line
+  const yAxisMin = midBalance - dataRange * 1.5;
+  const yAxisMax = midBalance + dataRange * 1.5;
 
-return (
-  <div className="balanceDashboard">
-    <div className="balanceDashboard__controls">
-      <select
-        className="balanceDashboard__controls__select"
-        value={selectedAsset}
-        onChange={handleAssetChange}
-      >
-        <option value="All Assets">All Assets</option>
-        <option value="Account 1">Account 1</option>
-        <option value="Account 2">Account 2</option>
-        <option value="Securities">Securities</option>
-      </select>
-      <div className="balanceDashboard__controls__periodSwitch">
-        <button
-          className={`balanceDashboard__controls__periodSwitch__button ${
-            selectedPeriod === '7d'
-              ? 'balanceDashboard__controls__periodSwitch__button--active'
-              : ''
-          }`}
-          onClick={() => handlePeriodSwitch('7d')}
+  return (
+    <div className="balanceDashboard">
+      <div className="balanceDashboard__controls">
+        <select
+          className="balanceDashboard__controls__select"
+          value={selectedAsset}
+          onChange={handleAssetChange}
         >
-          7D
-        </button>
-        <button
-          className={`balanceDashboard__controls__periodSwitch__button ${
-            selectedPeriod === '30d'
-              ? 'balanceDashboard__controls__periodSwitch__button--active'
-              : ''
-          }`}
-          onClick={() => handlePeriodSwitch('30d')}
-        >
-          30D
-        </button>
-        <button
-          className={`balanceDashboard__controls__periodSwitch__button ${
-            selectedPeriod === '90d'
-              ? 'balanceDashboard__controls__periodSwitch__button--active'
-              : ''
-          }`}
-          onClick={() => handlePeriodSwitch('90d')}
-        >
-          90D
-        </button>
+          <option value="All Assets">All Assets</option>
+          <option value="Account 1">Account 1</option>
+          <option value="Account 2">Account 2</option>
+          <option value="Securities">Securities</option>
+        </select>
+        <div className="balanceDashboard__controls__periodSwitch">
+          <button
+            className={`balanceDashboard__controls__periodSwitch__button ${
+              selectedPeriod === '7d'
+                ? 'balanceDashboard__controls__periodSwitch__button--active'
+                : ''
+            }`}
+            onClick={() => handlePeriodSwitch('7d')}
+          >
+            7D
+          </button>
+          <button
+            className={`balanceDashboard__controls__periodSwitch__button ${
+              selectedPeriod === '30d'
+                ? 'balanceDashboard__controls__periodSwitch__button--active'
+                : ''
+            }`}
+            onClick={() => handlePeriodSwitch('30d')}
+          >
+            30D
+          </button>
+          <button
+            className={`balanceDashboard__controls__periodSwitch__button ${
+              selectedPeriod === '90d'
+                ? 'balanceDashboard__controls__periodSwitch__button--active'
+                : ''
+            }`}
+            onClick={() => handlePeriodSwitch('90d')}
+          >
+            90D
+          </button>
+        </div>
+      </div>
+
+      {/* Chart */}
+      <div className="balanceDashboard__chart">
+        <ResponsiveContainer width="100%" height={100}>
+          <AreaChart data={chartData}>
+            <defs>
+              <linearGradient id="colorBalance" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stopColor="#34C759" stopOpacity={0.8} />
+                <stop offset="100%" stopColor="#34C759" stopOpacity={0} />
+              </linearGradient>
+            </defs>
+            <XAxis dataKey="date" hide />
+            <YAxis domain={[yAxisMin, yAxisMax]} hide />
+            <Tooltip
+              contentStyle={{
+                backgroundColor: 'rgba(255, 255, 255, 0.9)',
+                borderRadius: '10px',
+                border: 'none',
+                boxShadow: '0 2px 8px rgba(0, 0, 0, 0.15)',
+              }}
+              labelFormatter={(label) => `Date: ${label}`}
+              formatter={(value: number) => [`$${value}`, 'Balance']}
+            />
+            <Area
+              type="monotone"
+              dataKey="balance"
+              stroke="#34C759"
+              fill="url(#colorBalance)"
+              strokeWidth={2}
+            />
+          </AreaChart>
+        </ResponsiveContainer>
+      </div>
+
+      {/* PnL and Balance Summary */}
+      <div className="balanceDashboard__content">
+        <div className="balanceDashboard__content__section">
+          <span className="balanceDashboard__content__section__label">
+            {selectedPeriod.toUpperCase()} PnL
+          </span>
+          <span
+            className={`balanceDashboard__content__section__value ${
+              totalPnL >= 0
+                ? 'balanceDashboard__content__section__value--positive'
+                : 'balanceDashboard__content__section__value--negative'
+            }`}
+          >
+            {formatCurrency(totalPnL)}
+          </span>
+        </div>
+        <div className="balanceDashboard__content__section">
+          <span className="balanceDashboard__content__section__label">
+            Current Balance
+          </span>
+          <span className="balanceDashboard__content__section__value balanceDashboard__content__section__value--positive">
+            {currentBalance !== undefined
+              ? formatCurrency(currentBalance)
+              : 'N/A'}
+          </span>
+        </div>
       </div>
     </div>
-
-    {/* Chart */}
-    <div className="balanceDashboard__chart">
-      <ResponsiveContainer width="100%" height={100}>
-        <AreaChart data={chartData}>
-          <defs>
-            <linearGradient id="colorBalance" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#34C759" stopOpacity={0.8} />
-              <stop offset="100%" stopColor="#34C759" stopOpacity={0} />
-            </linearGradient>
-          </defs>
-          <XAxis dataKey="date" hide />
-          <YAxis domain={[yAxisMin, yAxisMax]} hide />
-          <Tooltip
-            contentStyle={{
-              backgroundColor: 'rgba(255, 255, 255, 0.9)',
-              borderRadius: '10px',
-              border: 'none',
-              boxShadow: '0 2px 8px rgba(0, 0, 0, 0.15)',
-            }}
-            labelFormatter={(label) => `Date: ${label}`}
-            formatter={(value: number) => [`$${value}`, 'Balance']}
-          />
-          <Area
-            type="monotone"
-            dataKey="balance"
-            stroke="#34C759"
-            fill="url(#colorBalance)"
-            strokeWidth={2}
-          />
-        </AreaChart>
-      </ResponsiveContainer>
-    </div>
-
-    {/* PnL and Balance Summary */}
-    <div className="balanceDashboard__content">
-      <div className="balanceDashboard__content__section">
-        <span className="balanceDashboard__content__section__label">
-          {selectedPeriod.toUpperCase()} PnL
-        </span>
-        <span
-          className={`balanceDashboard__content__section__value ${
-            totalPnL >= 0
-              ? 'balanceDashboard__content__section__value--positive'
-              : 'balanceDashboard__content__section__value--negative'
-          }`}
-        >
-          {formatCurrency(totalPnL)}
-        </span>
-      </div>
-      <div className="balanceDashboard__content__section">
-        <span className="balanceDashboard__content__section__label">
-          Current Balance
-        </span>
-        <span className="balanceDashboard__content__section__value balanceDashboard__content__section__value--positive">
-          {currentBalance !== undefined
-            ? formatCurrency(currentBalance)
-            : 'N/A'}
-        </span>
-      </div>
-    </div>
-  </div>
-);
+  );
 };
 
 export default BalanceDashboard;

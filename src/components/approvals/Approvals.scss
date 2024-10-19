@@ -1,14 +1,11 @@
 @import "@styles/_variables.scss";
 
 .approvals-widget {
-  grid-column: 1 / span 1; // Start at column 1, span 1 column
-  grid-row: 1 / span 2;
-
   background-color: $bg-primary;
   border-radius: 8px;
   padding: 16px;
-  max-height: 600px; // Adjust as needed
-  overflow: auto; // Enable scrolling if content exceeds max height
+  height: 100%; // Убедитесь, что высота 100%
+  overflow: auto; // Прокрутка при необходимости
 
   &__header {
     display: flex;
@@ -55,6 +52,20 @@
         font-weight: 500;
       }
     }
+  }
+
+  /* Тонкий скроллбар без фонового цвета */
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
   }
 }
 
