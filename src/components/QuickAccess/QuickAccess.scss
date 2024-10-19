@@ -1,0 +1,31 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 30px;
+  background-color: #255540;
+  padding: 30px;
+  border-radius: 15px;
+  margin-left: 300px;
+}
+
+.grid-item {
+  color: black;
+  cursor: pointer;
+  font-size: 12px;
+  text-align: center;
+  padding: 20px;
+  width: 140px;
+  height: 140px;
+  background-color: #f0f0f0;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+}
+
+.grid-item:hover {
+  transform: scale(1.1);
+}
