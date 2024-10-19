@@ -1,6 +1,8 @@
 @import "@styles/_variables.scss";
 
 .exchangeRates {
+  grid-column: 3 / span 1; // Start at column 3
+  grid-row: 2 / span 1;
   display: flex;
   flex-direction: column;
   background-color: $bg-primary;

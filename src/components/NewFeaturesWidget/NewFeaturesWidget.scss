@@ -1,10 +1,9 @@
 @import "@styles/variables.scss";
 
 .newFeatures {
-  grid-column-start: 2;
-  grid-column-end: 3;
-  grid-row-start: 2;
-  grid-row-end: 3;
+  grid-column: 2 / span 1; // Start at column 2
+  grid-row: 2 / span 1;    // Start at row 2
+  /* Existing styles */
 
   display: flex;
   border: 1px solid #e5e7eb;

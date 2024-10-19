@@ -1,6 +1,9 @@
 @import "@styles/_variables.scss";
 
 .approvals-widget {
+  grid-column: 1 / span 1; // Start at column 1, span 1 column
+  grid-row: 1 / span 2;
+
   background-color: $bg-primary;
   border-radius: 8px;
   padding: 16px;

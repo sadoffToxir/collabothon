@@ -6,6 +6,8 @@ $negative-color: #ff3b30;
 $font-color: #555;
 
 .balanceDashboard {
+  grid-column: 3 / span 1; // Start at column 3
+  grid-row: 1 / span 1;    // Start at row 1
   display: flex;
   flex-direction: column;
   background-color: $bg-primary;

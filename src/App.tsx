@@ -2,15 +2,14 @@ import { ConfigProvider } from 'antd';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 import Approvals from '@components/approvals/Approvals';
-import { Kittens } from '@components/Kittens/Kittens';
-import DefaultLayout from '@components/layout/DefaultLayout';
-import NewFeaturesWidget from '@components/NewFeaturesWidget/NewFeaturesWidget';
 import QuickAccess from '@components/QuickAccess/QuickAccess';
+import NewFeaturesWidget from '@components/NewFeaturesWidget/NewFeaturesWidget';
 import BalanceDashboard from '@components/balanceDashboard/balanceDashboard';
+import ExchangeRates from '@components/exchangeRates/exchangeRates';
+import DefaultLayout from '@components/layout/DefaultLayout';
 import { theme } from '@plugins/antDesign';
 
 import './App.css';
-import ExchangeRates from '@components/exchangeRates/exchangeRates';
 
 function App() {
   return (
@@ -18,23 +17,19 @@ function App() {
       <ConfigProvider theme={theme}>
         <Router>
           <Routes>
-            <Route path="/approvals" element={<Approvals />} />
-            <Route path="/quick-access" element={<QuickAccess />} />
-            <Route path='/kittens' element={<Kittens />} />
+            {/* Other routes */}
             <Route
               path="/"
               element={
-                <div className="App">
-                  <DefaultLayout>
-                    <Approvals />
-                    <QuickAccess />
-                    <NewFeaturesWidget />
-                    <BalanceDashboard />
-                    <ExchangeRates />
-          </DefaultLayout>
-                </div>
+                <DefaultLayout>
+                  <Approvals />
+                  <QuickAccess />
+                  <NewFeaturesWidget />
+                  <BalanceDashboard />
+                  <ExchangeRates />
+                </DefaultLayout>
               }
-            ></Route>
+            />
           </Routes>
         </Router>
       </ConfigProvider>

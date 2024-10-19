@@ -1,14 +1,14 @@
-import {
-  SearchOutlined
-} from '@ant-design/icons';
-
+import React from 'react';
+import { SearchOutlined } from '@ant-design/icons';
 import './DefaultLayout.scss';
 
-interface Props {
-  children: React.ReactNode
-}
+import Approvals from '@components/approvals/Approvals';
+import QuickAccess from '@components/QuickAccess/QuickAccess';
+import NewFeaturesWidget from '@components/NewFeaturesWidget/NewFeaturesWidget';
+import BalanceDashboard from '@components/balanceDashboard/balanceDashboard';
+import ExchangeRates from '@components/exchangeRates/exchangeRates';
 
-const DefaultLayout = ({ children }: Props) => {
+const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
   const accounts = [
     'Private Customer',
     'Enterprise Customer',
@@ -37,19 +37,19 @@ const DefaultLayout = ({ children }: Props) => {
             <div className="header__logo">
               <span>Commerzbank</span>
               <div>
-                <img src="/public/logo.png" alt="" />
+                <img src="/public/logo.png" alt="Logo" />
               </div>
             </div>
             <div className="header__accounts">
-              {accounts.map((account, index) => 
+              {accounts.map((account, index) => (
                 <div key={index} className="header__account">
                   {account}
                 </div>
-              )}
+              ))}
             </div>
           </div>
           <div className="header__bottomRow">
-            {navigation.map((nav, index) => 
+            {navigation.map((nav, index) => (
               <div
                 key={index}
                 className={`header__navItem ${
@@ -58,7 +58,7 @@ const DefaultLayout = ({ children }: Props) => {
               >
                 {nav}
               </div>
-            )}
+            ))}
           </div>
         </div>
       </header>
