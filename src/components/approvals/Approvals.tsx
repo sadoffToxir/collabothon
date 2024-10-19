@@ -1,24 +1,26 @@
 import type { CollapseProps } from 'antd';
 import { Button, Collapse } from 'antd';
 
-import './Approvals.scss'
+import './Approvals.scss';
 
 export const Approvals = () => {
   const onChange = (key: string | string[]) => {
     console.log(key);
   };
 
-  const genExtra = (url: string) => 
+  const genExtra = (url: string) => (
     <Button
-      size='small'
+      size="small"
       color="default"
       variant="solid"
       href={url}
       onClick={(event) => {
         event.stopPropagation();
-      }}>View</Button>
-  ;
-
+      }}
+    >
+      View
+    </Button>
+  );
   const pendingApprovals = [
     {
       id: 1,
@@ -27,7 +29,7 @@ export const Approvals = () => {
       created_at: '2024-10-30 at 09:00',
       deadline: '2024-10-10 at 09:00',
       status: 'pending',
-      url: '/leave-request/1'
+      url: '/leave-request/1',
     },
     {
       id: 2,
@@ -36,7 +38,7 @@ export const Approvals = () => {
       created_at: '2024-10-30 at 09:00',
       deadline: '2024-10-10 at 09:00',
       status: 'pending',
-      url: '/transaction-request/2'
+      url: '/transaction-request/2',
     },
     {
       id: 3,
@@ -107,11 +109,19 @@ export const Approvals = () => {
     return {
       key: approval.id,
       label: approval.title,
-      children: <div className='text-left'>
-        <div><b>Description:</b> {approval.description}</div>
-        <div><b>Created:</b> {approval.created_at}</div>
-        <div><b>Deadline:</b> {approval.deadline}</div>
-      </div>,
+      children: (
+        <div className="text-left">
+          <div>
+            <b>Description:</b> {approval.description}
+          </div>
+          <div>
+            <b>Created:</b> {approval.created_at}
+          </div>
+          <div>
+            <b>Deadline:</b> {approval.deadline}
+          </div>
+        </div>
+      ),
       extra: genExtra(approval.url),
     }
 	
@@ -127,7 +137,7 @@ export const Approvals = () => {
         items={items}
       />
     </div>
-  </div>
-}
+  );
+};
 
 export default Approvals;
