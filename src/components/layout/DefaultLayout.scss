@@ -1,0 +1,80 @@
+@import "@styles/_variables.scss";
+
+.defaultLayout {
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.header {
+  color: $text-secondary;
+  background-color: $accent-bg;
+  font-size: 14px;
+
+  &__topRow {
+    font-size: 20px;
+    padding: 10px 5px 0;
+  }
+
+  &__wrapper {
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  &__middleRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 18px;
+    padding: 10px 0;
+  }
+
+  &__logo {
+    text-transform: uppercase;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: white;
+    font-size: 30px;
+
+    & img {
+      width: 50px;
+      width: 50px;
+    }
+  }
+
+  &__accounts {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+  }
+
+  &__account {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  &__bottomRow {
+    display: flex;
+    gap: 4rem;
+  }
+
+  &__navItem {
+    cursor: pointer;
+    padding: 15px 0;
+
+    &--active {
+      color: white;
+      border-bottom: 4px solid $primary-color;
+    }
+  }
+}
+
+main {
+  width: 90%;
+  margin: 0 auto;
+}
