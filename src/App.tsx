@@ -4,6 +4,7 @@ import DefaultLayout from '@components/layout/DefaultLayout'
 import { theme } from '@plugins/antDesign'
 
 import './App.css'
+import QuickAccess from './components/QuickAccess/QuickAccess';
 
 function App() {
   return (
@@ -15,6 +16,10 @@ function App() {
       </div>
     </ConfigProvider>
   )
+    <>
+      <QuickAccess />
+    </>
+  );
 }
 
-export default App
+export default App;
