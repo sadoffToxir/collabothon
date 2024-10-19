@@ -10,6 +10,8 @@ export default defineConfig({
   resolve: {
     alias: {
       '@components': path.resolve(path.dirname(new URL(import.meta.url).pathname), 'src/components'),
+      '@plugins': path.resolve(path.dirname(new URL(import.meta.url).pathname), 'src/plugins'),
+      '@styles': path.resolve(path.dirname(new URL(import.meta.url).pathname), 'src/styles'),
     }
   },
 })
