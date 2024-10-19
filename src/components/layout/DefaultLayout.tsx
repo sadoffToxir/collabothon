@@ -9,6 +9,7 @@ import QuickAccess from '@components/QuickAccess/QuickAccess';
 import NewFeaturesWidget from '@components/NewFeaturesWidget/NewFeaturesWidget';
 import BalanceDashboard from '@components/balanceDashboard/balanceDashboard';
 import ExchangeRates from '@components/exchangeRates/exchangeRates';
+import Kittens from '@components/Kittens/Kittens';
 
 type GridWidgetType = {
   id: string;
@@ -52,6 +53,11 @@ const availableWidgetTypes: {
   exchangeRates: {
     name: 'Exchange Rates',
     component: <ExchangeRates />,
+    defaultGridArea: { colSpan: 1, rowSpan: 1 },
+  },
+  kittens: {
+    name: 'Kittens',
+    component: <Kittens />,
     defaultGridArea: { colSpan: 1, rowSpan: 1 },
   },
 };
