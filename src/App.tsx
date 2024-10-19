@@ -1,4 +1,5 @@
 import { ConfigProvider } from 'antd';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 import Approvals from '@components/approvals/Approvals';
 import DefaultLayout from '@components/layout/DefaultLayout';
