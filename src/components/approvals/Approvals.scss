@@ -1,48 +1,80 @@
 @import "@styles/_variables.scss";
 
-.approvals {
-	grid-column-start: 1;
-	grid-column-end: 2;
-	grid-row-start: 1;
-	grid-row-end: 3;
+.approvals-widget {
+  background-color: $bg-primary;
+  border-radius: 8px;
+  padding: 16px;
+  max-height: 600px; // Adjust as needed
+  overflow: auto; // Enable scrolling if content exceeds max height
 
-	display: flex;
-	flex-direction: column;
-	width: 400px;
-	height: 500px;
-	background-color: $bg-primary;
-	border-radius: 8px;
-	padding: 16px;
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
-	&__heading {
-		font-weight: 700;
-		padding: 10px 0;
-		margin: 0;
-	}
+    h2 {
+      margin: 0;
+      font-size: 24px;
+    }
+  }
 
-	&__items {
-		border-radius: 0 0 8px 8px;
-		height: 100%;
-		overflow: scroll;
-		position: relative;
+  &__list {
+    margin-top: 16px;
 
-		& > .ant-collapse {
-			background-color: transparent !important;
-			border-radius: 0;
-			border: none;
-		}
+    .approval-item {
+      cursor: pointer;
+      padding: 16px;
+      transition: background-color 0.2s;
 
-		& > .ant-collapse-item {
-			border-bottom: 1px solid black !important;
+      &:hover {
+        background-color: $bg-secondary;
+      }
 
-			&:last-child {
-				border: none;
-			}
+      .ant-list-item-meta {
+        align-items: center;
 
-			&:first-child {
-				border-top-left-radius: 0px;
-				border-top-right-radius: 0px;
-			}
-		}
-	}
+        .ant-list-item-meta-avatar {
+          margin-right: 16px;
+        }
+
+        .ant-list-item-meta-title {
+          font-size: 18px;
+          font-weight: 500;
+        }
+
+        .ant-list-item-meta-description {
+          color: $text-secondary;
+        }
+      }
+
+      .approval-item__amount {
+        font-size: 16px;
+        font-weight: 500;
+      }
+    }
+  }
+}
+
+.approval-details-modal {
+  .ant-modal-content {
+    border-radius: 8px;
+  }
+
+  .approval-details {
+    p {
+      margin-bottom: 12px;
+      font-size: 16px;
+    }
+
+    .qr-code {
+      text-align: center;
+      margin-top: 20px;
+
+      p {
+        margin-top: 12px;
+        font-size: 14px;
+        color: $text-secondary;
+      }
+    }
+  }
 }
