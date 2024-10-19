@@ -1,11 +1,14 @@
 import {
   SearchOutlined
 } from '@ant-design/icons';
-import Approvals from '@components/approvals/Approvals';
 
 import './DefaultLayout.scss'
 
-const DefaultLayout = () => {
+interface Props {
+  children: React.ReactNode
+}
+
+const DefaultLayout = ({ children }: Props) => {
   const accounts = [
     'Private Customer',
     'Enterprise Customer',
@@ -56,8 +59,7 @@ const DefaultLayout = () => {
         </div>
       </header>
       <main>
-        <Approvals />
-        <img src="/public/layout.png" alt="" />
+        {children}
       </main>
     </div>
   );

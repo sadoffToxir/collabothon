@@ -1,9 +1,10 @@
 import { ConfigProvider } from 'antd';
-import './App.css'
-import NewFeaturesWidget from './components/NewFeaturesWidget/NewFeaturesWidget'
+
+import Approvals from '@components/approvals/Approvals';
 import DefaultLayout from '@components/layout/DefaultLayout';
+import NewFeaturesWidget from '@components/newFeaturesWidget/NewFeaturesWidget'
+import QuickAccess from '@components/QuickAccess/QuickAccess';
 import { theme } from '@plugins/antDesign';
-import QuickAccess from './components/QuickAccess/QuickAccess';
 
 import './App.css';
 
@@ -12,11 +13,14 @@ function App() {
     <>
       <ConfigProvider theme={theme}>
         <div className="App">
-          <DefaultLayout />
-          <NewFeaturesWidget />
+          <DefaultLayout>
+            <Approvals />
+            <QuickAccess />
+            <NewFeaturesWidget />
+          </DefaultLayout>
         </div>
       </ConfigProvider>
-      <QuickAccess />
+      <NewFeaturesWidget />
     </>
   );
 }
