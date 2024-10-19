@@ -11,6 +11,8 @@ export const Approvals = () => {
   const genExtra = (url: string) => 
     <Button
       size='small'
+      color="default"
+      variant="solid"
       href={url}
       onClick={(event) => {
         event.stopPropagation();

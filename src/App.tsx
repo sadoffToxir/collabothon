@@ -1,15 +1,19 @@
-import Approvals from '@components/approvals/Approvals'
+import { ConfigProvider } from 'antd';
+
+import DefaultLayout from '@components/layout/DefaultLayout'
+import { theme } from '@plugins/antDesign'
 
 import './App.css'
 
 function App() {
-
   return (
-    <>
+    <ConfigProvider
+      theme={theme}
+    >
       <div className="App">
-        <Approvals />
+        <DefaultLayout />
       </div>
-    </>
+    </ConfigProvider>
   )
 }
 
