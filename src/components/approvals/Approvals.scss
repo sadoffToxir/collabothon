@@ -1,0 +1,38 @@
+.approvals {
+	display: flex;
+	flex-direction: column;
+	width: 400px;
+	height: 500px;
+	background-color: #d9d9d9;
+	border-radius: 8px;
+	padding: 0 2px 2px;
+
+	&__heading {
+		padding: 10px 0;
+		margin: 0;
+	}
+
+	&__items {
+		background-color: #fafafa;
+		border-radius: 0 0 8px 8px;
+		height: 100%;
+		overflow: scroll;
+
+		& > .ant-collapse {
+			border-radius: 0;
+		}
+
+		& > .ant-collapse-item {
+			border-bottom: 1px solid black !important;
+
+			&:last-child {
+				border: none;
+			}
+
+			&:first-child {
+				border-top-left-radius: 0px;
+				border-top-right-radius: 0px;
+			}
+		}
+	}
+}
