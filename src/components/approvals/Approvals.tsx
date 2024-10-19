@@ -47,9 +47,63 @@ export const Approvals = () => {
       created_at: '2024-10-30 at 09:00',
       deadline: '2024-10-10 at 09:00',
       status: 'pending',
-      url: '/new-hire-request/3',
+      url: '/new-hire-request/3'
     },
-  ];
+    {
+      id: 4,
+      title: 'Approve request for leave',
+      description: 'Request for leave from 2024-11-01 to 2021-11-15',
+      created_at: '2024-10-30 at 09:00',
+      deadline: '2024-10-10 at 09:00',
+      status: 'pending',
+      url: '/leave-request/1'
+    },
+    {
+      id: 5,
+      title: 'Approve request for transaction',
+      description: 'Request for transaction of $1000 to John Doe',
+      created_at: '2024-10-30 at 09:00',
+      deadline: '2024-10-10 at 09:00',
+      status: 'pending',
+      url: '/transaction-request/2'
+    },
+    {
+      id: 6,
+      title: 'Approve request for new hire',
+      description: 'Request for new hire of John Doe',
+      created_at: '2024-10-30 at 09:00',
+      deadline: '2024-10-10 at 09:00',
+      status: 'pending',
+      url: '/new-hire-request/3'
+    },
+    {
+      id: 7,
+      title: 'Approve request for leave',
+      description: 'Request for leave from 2024-11-01 to 2021-11-15',
+      created_at: '2024-10-30 at 09:00',
+      deadline: '2024-10-10 at 09:00',
+      status: 'pending',
+      url: '/leave-request/1'
+    },
+    {
+      id: 8,
+      title: 'Approve request for transaction',
+      description: 'Request for transaction of $1000 to John Doe',
+      created_at: '2024-10-30 at 09:00',
+      deadline: '2024-10-10 at 09:00',
+      status: 'pending',
+      url: '/transaction-request/2'
+    },
+    {
+      id: 9,
+      title: 'Approve request for new hire',
+      description: 'Request for new hire of John Doe',
+      created_at: '2024-10-30 at 09:00',
+      deadline: '2024-10-10 at 09:00',
+      status: 'pending',
+      url: '/new-hire-request/3'
+    }
+  ]
 
   const items: CollapseProps['items'] = pendingApprovals.map((approval) => {
     return {
@@ -69,40 +123,19 @@ export const Approvals = () => {
         </div>
       ),
       extra: genExtra(approval.url),
-    };
-  });
+    }
+	
+  })
+  return <div className='approvals'>
 
-  // const items1: CollapseProps['items'] = [
-  //   {
-  //     key: '1',
-  //     label: 'This is panel header 1',
-  //     children: <div>{text}</div>,
-  //     extra: genExtra(this!.url),
-  //   },
-  //   {
-  //     key: '2',
-  //     label: 'This is panel header 2',
-  //     children: <div>{text}</div>,
-  //     extra: genExtra(url),
-  //   },
-  //   {
-  //     key: '3',
-  //     label: 'This is panel header 3',
-  //     children: <div>{text}</div>,
-  //     extra: genExtra(url),
-  //   },
-  // ];
+    <h2 className='approvals__heading'>Pending requests</h2>
+    <div className='approvals__items'>
 
-  return (
-    <div className="approvals">
-      <h3 className="approvals__heading">Pending requests</h3>
-      <div className="approvals__items">
-        <Collapse
-          onChange={onChange}
-          expandIconPosition="start"
-          items={items}
-        />
-      </div>
+      <Collapse
+        onChange={onChange}
+        expandIconPosition='end'
+        items={items}
+      />
     </div>
   );
 };

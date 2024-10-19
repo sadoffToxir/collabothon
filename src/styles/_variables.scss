@@ -1,27 +1,26 @@
-$primary-background-color: #002f3f;
+$accent-bg: #002f3f;
 
 // Primary Colors
-$primary-color: #ffc72c; // Yellow - used for highlights and buttons
-$primary-dark: #002f3f; // Dark Blue - used for navbar and other key elements
-$primary-light: #ffffff; // White - general background color
+$primary-color: #ffc72c;
+$primary-dark: #002f3f;
+$primary-light: #ffffff;
 
 // Text Colors
-$text-primary: #002c40; // Dark grey/black for primary text
-$text-secondary: #52616a; // Grey for secondary text
-$text-light: #ffffff; // White text (e.g., on buttons)
+$text-primary: #002f3f;
+$text-secondary: #9bc1c7;
+$text-light: #ffffff;
 
 // Background Colors
-$bg-primary: #eaf5eb; // Light grey for general background
-$bg-secondary: #e9ecef; // Lighter grey for card backgrounds
-$bg-hover: #d6d8da; // Hover state for cards or buttons
+$bg-primary: #eaf5eb;
+$bg-secondary: #e9ecef;
+$bg-hover: #d6d8da;
 
-// Borders and Dividers
-$border-color: #d3d6da; // Light grey for borders
+$border-color: #2c4c40;
 
 // Accent Colors
-$accent-success: #00b41e; // Green for success indicators
-$accent-danger: #d9534f; // Red for error/danger indicators
-$accent-warning: #ffbc00; // Orange/yellow for warning indicators
+$accent-success: #00b41e;
+$accent-danger: #d9534f;
+$accent-warning: #ffbc00;
 
 // Other Colors
-$shadow-color: rgba(0, 0, 0, 0.1); // Shadow for cards
+$shadow-color: rgba(0, 0, 0, 0.1);

@@ -9,22 +9,10 @@ export default defineConfig({
 
   resolve: {
     alias: {
-      '@assets': path.posix.resolve(
-        path.dirname(new URL(import.meta.url).pathname),
-        'src/assets'
-      ),
-      '@components': path.posix.resolve(
-        path.dirname(new URL(import.meta.url).pathname),
-        'src/components'
-      ),
-      '@plugins': path.posix.resolve(
-        path.dirname(new URL(import.meta.url).pathname),
-        'src/plugins'
-      ),
-      '@styles': path.posix.resolve(
-        path.dirname(new URL(import.meta.url).pathname),
-        'src/styles'
-      ),
+      '@components': path.posix.resolve(path.dirname(new URL(import.meta.url).pathname),'src/components'),
+      '@plugins': path.posix.resolve(path.dirname(new URL(import.meta.url).pathname),'src/plugins'),
+      '@styles': path.posix.resolve(path.dirname(new URL(import.meta.url).pathname),'src/styles'),
+      '@assets': path.posix.resolve(path.dirname(new URL(import.meta.url).pathname),'src/assets'),
     },
   },
 });

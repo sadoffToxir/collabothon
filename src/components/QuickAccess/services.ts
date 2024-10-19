@@ -22,47 +22,52 @@ const colors = [
   '#20B2AA', // Light Sea Green
 ];
 
-const services: Array<ServiceType> = [
-  {
-    name: 'Notifications Service',
-    icon: BellIcon,
-    color: colors[0],
-  },
-  {
-    name: 'File Storage',
-    icon: FileIcon,
-    color: colors[1],
-  },
-  {
-    name: 'Favourites Manager',
-    icon: HeartIcon,
-    color: colors[2],
-  },
-  {
-    name: 'Home Dashboard',
-    icon: HomeIcon,
-    color: colors[3],
-  },
-  {
-    name: 'Mailbox Service',
-    icon: MailIcon,
-    color: colors[4],
-  },
-  {
-    name: 'Search Engine',
-    icon: SearchIcon,
-    color: colors[5],
-  },
-  {
-    name: 'Settings Control',
-    icon: SettingsIcon,
-    color: colors[6],
-  },
-  {
-    name: 'User Profile Service',
-    icon: UserIcon,
-    color: colors[7],
-  },
-];
-
+const services: Array<ServiceType[]> = [
+  [
+    {
+      name: 'Notifications Service',
+      icon: BellIcon,
+      color: colors[0],
+    },
+    {
+      name: 'File Storage',
+      icon: FileIcon,
+      color: colors[1],
+    },
+    {
+      name: 'Favourites Manager',
+      icon: HeartIcon,
+      color: colors[2],
+    },
+    {
+      name: 'Home Dashboard',
+      icon: HomeIcon,
+      color: colors[3],
+    },
+  ],
+  [
+    {
+      name: 'Mailbox Service',
+      icon: MailIcon,
+      color: colors[4],
+    },
+    {
+      name: 'Search Engine',
+      icon: SearchIcon,
+      color: colors[5],
+    },
+    {
+      name: 'Settings Control',
+      icon: SettingsIcon,
+      color: colors[6],
+    },
+    {
+      name: 'User Profile',
+      icon: UserIcon,
+      color: colors[7],
+    },
+  ]
+]
+  
 export default services;
+  
