@@ -6,6 +6,7 @@ import { Kittens } from '@components/Kittens/Kittens';
 import DefaultLayout from '@components/layout/DefaultLayout';
 import NewFeaturesWidget from '@components/NewFeaturesWidget/NewFeaturesWidget';
 import QuickAccess from '@components/QuickAccess/QuickAccess';
+import BalanceDashboard from '@components/balanceDashboard/balanceDashboard';
 import { theme } from '@plugins/antDesign';
 
 import './App.css';
@@ -27,7 +28,8 @@ function App() {
                     <Approvals />
                     <QuickAccess />
                     <NewFeaturesWidget />
-                  </DefaultLayout>
+                    <BalanceDashboard />
+          </DefaultLayout>
                 </div>
               }
             ></Route>

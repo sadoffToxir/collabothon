@@ -1,0 +1,86 @@
+@import "@styles/_variables.scss";
+
+// Variables for colors
+$positive-color: #34c759;
+$negative-color: #ff3b30;
+$font-color: #555;
+
+.balanceDashboard {
+  display: flex;
+  flex-direction: column;
+  background-color: $bg-primary;
+  border-radius: 8px;
+  padding: 16px;
+  width: 320px;
+  height: 240px;
+
+  &__controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &__select {
+      font-size: 14px;
+      padding: 3px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      outline: none;
+      cursor: pointer;
+      background-color: #fff;
+    }
+
+    &__periodSwitch {
+      display: flex;
+
+      &__button {
+        background: none;
+        border: none;
+        font-size: 14px;
+        margin-left: 5px;
+        color: #888;
+        cursor: pointer;
+        transition: color 0.2s;
+
+        &--active {
+          color: $positive-color;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+
+  &__chart {
+    flex: 1 1 auto;
+    padding: 10px 0;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+
+    &__section {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+
+      &__label {
+        font-size: 14px;
+        color: $font-color;
+      }
+
+      &__value {
+        font-size: 16px;
+        font-weight: bold;
+
+        &--positive {
+          color: $positive-color;
+        }
+
+        &--negative {
+          color: $negative-color;
+        }
+      }
+    }
+  }
+}
