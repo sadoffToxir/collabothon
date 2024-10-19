@@ -4,6 +4,7 @@ import DefaultLayout from '@components/layout/DefaultLayout'
 import { theme } from '@plugins/antDesign'
 
 import './App.css'
+import NewFeaturesWidget from './components/NewFeaturesWidget/NewFeaturesWidget'
 
 function App() {
   return (
@@ -12,9 +13,10 @@ function App() {
     >
       <div className="App">
         <DefaultLayout />
+        <NewFeaturesWidget />
       </div>
     </ConfigProvider>
-  )
+)
 }
 
 export default App
