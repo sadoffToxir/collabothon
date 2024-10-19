@@ -5,7 +5,7 @@ import { theme } from './plugins/antDesign'
 
 import './App.css'
 import NewFeaturesWidget from './components/NewFeaturesWidget/NewFeaturesWidget'
-
+import BalanceDashboard from './components/balanceDashboard/balanceDashboard';
 function App() {
   return (
     <ConfigProvider
@@ -14,6 +14,7 @@ function App() {
       <div className="App">
         <DefaultLayout />
         <NewFeaturesWidget />
+        <BalanceDashboard />
       </div>
     </ConfigProvider>
 )
