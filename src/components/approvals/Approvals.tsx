@@ -8,7 +8,7 @@ export const Approvals = () => {
     console.log(key);
   };
 
-  const genExtra = (url: string) => (
+  const genExtra = (url: string) => 
     <Button
       size="small"
       color="default"
@@ -20,7 +20,7 @@ export const Approvals = () => {
     >
       View
     </Button>
-  );
+  ;
   const pendingApprovals = [
     {
       id: 1,
@@ -109,7 +109,7 @@ export const Approvals = () => {
     return {
       key: approval.id,
       label: approval.title,
-      children: (
+      children: 
         <div className="text-left">
           <div>
             <b>Description:</b> {approval.description}
@@ -121,23 +121,21 @@ export const Approvals = () => {
             <b>Deadline:</b> {approval.deadline}
           </div>
         </div>
-      ),
+      ,
       extra: genExtra(approval.url),
     }
 	
   })
   return <div className='approvals'>
-
     <h2 className='approvals__heading'>Pending requests</h2>
     <div className='approvals__items'>
-
       <Collapse
         onChange={onChange}
         expandIconPosition='end'
         items={items}
       />
     </div>
-  );
+  </div>
 };
 
 export default Approvals;

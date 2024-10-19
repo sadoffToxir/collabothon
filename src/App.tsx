@@ -20,7 +20,6 @@ function App() {
           </DefaultLayout>
         </div>
       </ConfigProvider>
-      <NewFeaturesWidget />
     </>
   );
 }
