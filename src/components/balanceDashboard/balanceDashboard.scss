@@ -1,103 +1,86 @@
+@import "@styles/_variables.scss";
+
 // Variables for colors
 $positive-color: #34c759;
 $negative-color: #ff3b30;
 $font-color: #555;
 
-.widget-container {
-  width: 320px;
-  background-color: #fff;
-  border-radius: 20px;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-}
-
-.widget-header {
-  padding: 20px;
-  background-color: #f9f9f9;
+.balanceDashboard {
   display: flex;
   flex-direction: column;
+  background-color: $bg-primary;
+  border-radius: 8px;
+  padding: 16px;
+  width: 320px;
+  height: 240px;
 
-  h2 {
-    margin: 0 0 10px 0;
-    font-size: 18px;
-    color: #333;
-  }
-
-  .controls {
+  &__controls {
     display: flex;
     justify-content: space-between;
     align-items: center;
 
-    .asset-select {
-      font-size: 16px;
-      padding: 5px;
+    &__select {
+      font-size: 14px;
+      padding: 3px;
       border: 1px solid #ddd;
       border-radius: 5px;
       outline: none;
       cursor: pointer;
+      background-color: #fff;
     }
 
-    .period-switch {
+    &__periodSwitch {
       display: flex;
 
-      button {
+      &__button {
         background: none;
         border: none;
-        font-size: 16px;
-        margin-left: 10px;
+        font-size: 14px;
+        margin-left: 5px;
         color: #888;
         cursor: pointer;
+        transition: color 0.2s;
 
-        &.active {
+        &--active {
           color: $positive-color;
           font-weight: bold;
         }
       }
     }
   }
-}
 
-.widget-chart {
-  padding: 10px 20px;
-}
+  &__chart {
+    flex: 1 1 auto;
+    padding: 10px 0;
+  }
 
-.widget-content {
-  padding: 20px;
-  background-color: #fff;
-
-  .pnl-section,
-  .balance-section {
+  &__content {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 15px;
+    flex-direction: column;
 
-    .pnl-label,
-    .balance-label {
-      font-size: 16px;
-      color: $font-color;
-    }
+    &__section {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
 
-    .pnl-value,
-    .balance-value {
-      font-size: 18px;
-      font-weight: bold;
-    }
-
-    .pnl-value {
-      &.positive {
-        color: $positive-color;
+      &__label {
+        font-size: 14px;
+        color: $font-color;
       }
 
-      &.negative {
-        color: $negative-color;
-      }
-    }
+      &__value {
+        font-size: 16px;
+        font-weight: bold;
 
-    .balance-value {
-      color: $positive-color;
+        &--positive {
+          color: $positive-color;
+        }
+
+        &--negative {
+          color: $negative-color;
+        }
+      }
     }
   }
 }

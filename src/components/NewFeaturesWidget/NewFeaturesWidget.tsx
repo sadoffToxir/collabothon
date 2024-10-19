@@ -1,8 +1,10 @@
 import serviceIcon from '@assets/new_widget.svg';
 
+import './NewFeaturesWidget.scss'
+
 const NewFeaturesWidget = () => {
   return (
-    <div className="flex border border-gray-200 p-8 rounded-2xl bg-white max-w-2xl mx-auto shadow-lg animate-fadeIn">
+    <div className="newFeaturesWidget flex border border-gray-200 p-8 rounded-2xl bg-white max-w-2xl mx-auto shadow-lg animate-fadeIn">
       <div className="flex-shrink-0 p-4">
         <img src={serviceIcon} alt="Service Icon" className="w-20 h-20 mb-4" />
       </div>
