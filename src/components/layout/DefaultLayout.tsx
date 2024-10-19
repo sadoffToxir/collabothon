@@ -1,4 +1,4 @@
-import Approvals from '@components/approvals/Approvals';
+import Approvals from "../approvals/Approvals";
 
 const DefaultLayout = () => {
   return (
