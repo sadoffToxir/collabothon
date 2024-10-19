@@ -1,7 +1,7 @@
 import { ConfigProvider } from 'antd';
 
-import DefaultLayout from '@components/layout/DefaultLayout'
-import { theme } from '@plugins/antDesign'
+import DefaultLayout from './components/layout/DefaultLayout'
+import { theme } from './plugins/antDesign'
 
 import './App.css'
 import NewFeaturesWidget from './components/NewFeaturesWidget/NewFeaturesWidget'

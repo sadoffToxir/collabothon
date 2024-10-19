@@ -12,6 +12,7 @@ export default defineConfig({
       '@components': path.resolve(path.dirname(new URL(import.meta.url).pathname), 'src/components'),
       '@plugins': path.resolve(path.dirname(new URL(import.meta.url).pathname), 'src/plugins'),
       '@styles': path.resolve(path.dirname(new URL(import.meta.url).pathname), 'src/styles'),
+      '@assets': path.posix.resolve(path.dirname(new URL(import.meta.url).pathname), 'src/assets'),
     }
   },
 })
