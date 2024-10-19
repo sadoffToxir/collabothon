@@ -38,7 +38,10 @@
   }
 
   &__rightContent {
+    justify-content: center;
     padding-left: 16px;
+    display: flex;
+    flex-direction: column;
     flex: 1;
   }
 
