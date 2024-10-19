@@ -1,11 +1,7 @@
-<<<<<<< Updated upstream
-import Approvals from "../approvals/Approvals";
-=======
 import {
   SearchOutlined
 } from '@ant-design/icons';
 import Approvals from '@components/approvals/Approvals';
->>>>>>> Stashed changes
 
 import './DefaultLayout.scss'
 
