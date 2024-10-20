@@ -127,30 +127,8 @@ export const Approvals = () => {
 	
   })
 
-  // const items1: CollapseProps['items'] = [
-  //   {
-  //     key: '1',
-  //     label: 'This is panel header 1',
-  //     children: <div>{text}</div>,
-  //     extra: genExtra(this!.url),
-  //   },
-  //   {
-  //     key: '2',
-  //     label: 'This is panel header 2',
-  //     children: <div>{text}</div>,
-  //     extra: genExtra(url),
-  //   },
-  //   {
-  //     key: '3',
-  //     label: 'This is panel header 3',
-  //     children: <div>{text}</div>,
-  //     extra: genExtra(url),
-  //   },
-  // ];
-
   return <div className='approvals'>
-
-    <h3 className='approvals__heading'>Pending requests</h3>
+    <h2 className='approvals__heading'>Pending requests</h2>
     <div className='approvals__items'>
       <Collapse
         onChange={onChange}
@@ -158,6 +136,7 @@ export const Approvals = () => {
         items={items}
       />
     </div>
+    <div className="overflow"></div>
   </div>
 };
 
