@@ -93,7 +93,7 @@ const Service = ({
           onClick={() => removeService(index, quickAccessId)}
           style={{ marginLeft: '10px', color: 'red', cursor: 'pointer' }}
         >
-          X
+          x
         </button>
       )}
     </div>
