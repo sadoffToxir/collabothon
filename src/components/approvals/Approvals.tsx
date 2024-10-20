@@ -166,40 +166,78 @@ export const Approvals = () => {
 
       {selectedApproval && (
         <Modal
-          className="approval-details-modal"
-          visible={!!selectedApproval}
-          title={`Approval Details - ${selectedApproval.title}`}
-          onCancel={() => setSelectedApproval(null)}
-          footer={[
-            <Button key="reject" onClick={handleReject}>
-              Reject
-            </Button>,
-            <Button key="approve" type="primary" onClick={handleApprove}>
-              Approve
-            </Button>,
-          ]}
-        >
-          <div className="approval-details">
-            <p>
-              <strong>Description:</strong> {selectedApproval.description}
-            </p>
-            {selectedApproval.amount && (
-              <p>
-                <strong>Amount:</strong> {selectedApproval.amount}
-              </p>
-            )}
-            <p>
-              <strong>Created At:</strong> {selectedApproval.created_at}
-            </p>
-            <p>
-              <strong>Deadline:</strong> {selectedApproval.deadline}
-            </p>
-            <div className="qr-code">
-              <QRCodeCanvas value={selectedApproval.url} size={200} />
-              <p>Scan this QR code to proceed with approval.</p>
+        className="approval-details-modal"
+        visible={!!selectedApproval}
+        title={null} // No default title, we'll use a custom close icon
+        onCancel={() => setSelectedApproval(null)} // X button functionality
+        footer={null} // Custom footer
+      >
+        <div className="approval-modal-content">
+          {/* Custom Header with Close (X) button */}
+          <div className="modal-header">
+            <h1>{selectedApproval.title}</h1>
+          
+          </div>
+      
+          {/* Divider */}
+          <div className="modal-divider"></div>
+      
+          {/* Main Content with QR code and details side-by-side */}
+          <div className="modal-body">
+            <div className="modal-content-container">
+              {/* Left Side - Detailed Information */}
+              <div className="modal-info">
+                <div className="modal-section">
+                  <p className="section-label">Description</p>
+                  <p>{selectedApproval.description}</p>
+                </div>
+      
+                {selectedApproval.amount && (
+                  <div className="modal-section">
+                    <p className="section-label">Amount</p>
+                    <p>{selectedApproval.amount}</p>
+                  </div>
+                )}
+      
+                {/* Additional relevant information */}
+                <div className="modal-section">
+                  <p className="section-label">Transaction Type</p>
+                  <p>Payment Order, Term Deposit, Money Market Loan, etc.</p>
+                </div>
+      
+                <div className="modal-section">
+                  <p className="section-label">Request Made By</p>
+                  <p>{selectedApproval.company} - {selectedApproval.requesterName}</p>
+                </div>
+      
+                <div className="modal-section">
+                  <p className="section-label">Created At</p>
+                  <p>{selectedApproval.created_at}</p>
+                </div>
+      
+                <div className="modal-section">
+                  <p className="section-label">Deadline</p>
+                  <p>{selectedApproval.deadline}</p>
+                </div>
+              </div>
+      
+              {/* Right Side - Smaller QR Code and Reject Button */}
+              <div className="qr-reject-container">
+                <QRCodeCanvas value={selectedApproval.url} size={100} />
+                <Button
+                  className="modal-button reject"
+                  onClick={handleReject}
+                >
+                  Reject
+                </Button>
+              </div>
             </div>
           </div>
-        </Modal>
+        </div>
+      </Modal>
+      
+    
+      
       )}
     </div>
   );

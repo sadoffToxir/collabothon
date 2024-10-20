@@ -10,6 +10,7 @@ import DefaultLayout from '@components/layout/DefaultLayout';
 import { theme } from '@plugins/antDesign';
 
 import './App.css';
+import Kittens from '@components/Kittens/Kittens';
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
                   <NewFeaturesWidget />
                   <BalanceDashboard />
                   <ExchangeRates />
+                  <Kittens />
                 </DefaultLayout>
               }
             />
