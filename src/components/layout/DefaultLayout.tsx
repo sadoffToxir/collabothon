@@ -1,15 +1,15 @@
-import React, { useState, useRef } from 'react';
-import { SearchOutlined, EditOutlined, CloseOutlined, PlusOutlined } from '@ant-design/icons';
-import { Modal, Button } from 'antd';
-import './DefaultLayout.scss';
+import React, { useRef,useState } from 'react';
+import { Button,Modal } from 'antd';
 
-// Импортируем компоненты виджетов
+import { CloseOutlined, EditOutlined, PlusOutlined,SearchOutlined } from '@ant-design/icons';
 import Approvals from '@components/approvals/Approvals';
-import QuickAccess from '@components/QuickAccess/QuickAccess';
-import NewFeaturesWidget from '@components/NewFeaturesWidget/NewFeaturesWidget';
 import BalanceDashboard from '@components/balanceDashboard/balanceDashboard';
 import ExchangeRates from '@components/exchangeRates/exchangeRates';
 import Kittens from '@components/Kittens/Kittens';
+import NewFeaturesWidget from '@components/NewFeaturesWidget/NewFeaturesWidget';
+import QuickAccess from '@components/QuickAccess/QuickAccess';
+
+import './DefaultLayout.scss';
 
 type GridWidgetType = {
   id: string;
@@ -194,15 +194,15 @@ const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
               </div>
             </div>
             <div className="header__accounts">
-              {accounts.map((account, index) => (
+              {accounts.map((account, index) => 
                 <div key={index} className="header__account">
                   {account}
                 </div>
-              ))}
+              )}
             </div>
           </div>
           <div className="header__bottomRow">
-            {navigation.map((nav, index) => (
+            {navigation.map((nav, index) => 
               <div
                 key={index}
                 className={`header__navItem ${
@@ -211,13 +211,13 @@ const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
               >
                 {nav}
               </div>
-            ))}
+            )}
           </div>
         </div>
       </header>
       <main>
         {/* Edit button */}
-        {isEditMode ? (
+        {isEditMode ? 
           <div className="edit-mode-buttons">
             <Button type="primary" onClick={saveChanges}>
               Save
@@ -226,15 +226,15 @@ const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
               Cancel
             </Button>
           </div>
-        ) : (
+          : 
           <div className="edit-button" onClick={toggleEditMode}>
             <EditOutlined />
           </div>
-        )}
+        }
 
         {/* Grid */}
         <div className="grid-container">
-          {gridWidgets.map(widget => (
+          {gridWidgets.map(widget => 
             <div
               key={widget.id}
               className={`${widget.type}-widget widget-container`}
@@ -244,17 +244,17 @@ const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
               }}
             >
               {/* Button to delete */}
-              {isEditMode && (
+              {isEditMode && 
                 <div className="remove-button" onClick={() => removeWidget(widget.id)}>
                   <CloseOutlined />
                 </div>
-              )}
+              }
               {widget.component}
             </div>
-          ))}
+          )}
 
           {/* Place to add new widget */}
-          {isEditMode && (
+          {isEditMode && 
             <>
               {Array.from({ length: 3 }).map((_, colIndex) =>
                 Array.from({ length: 2 }).map((_, rowIndex) => {
@@ -288,7 +288,7 @@ const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
                 })
               )}
             </>
-          )}
+          }
         </div>
 
         {/* Modal windows */}
@@ -299,8 +299,8 @@ const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
           footer={null}
         >
           <div className="widget-selection">
-            {remainingWidgets.length > 0 ? (
-              remainingWidgets.map(widgetType => (
+            {remainingWidgets.length > 0 ? 
+              remainingWidgets.map(widgetType => 
                 <div
                   key={widgetType}
                   className="widget-selection__item"
@@ -308,10 +308,10 @@ const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
                 >
                   {availableWidgetTypes[widgetType].name}
                 </div>
-              ))
-            ) : (
+              )
+              : 
               <p>No available widgets.</p>
-            )}
+            }
           </div>
         </Modal>
       </main>

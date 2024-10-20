@@ -1,9 +1,9 @@
 @import "@styles/variables.scss";
 
 .newFeatures {
-  grid-column: 2 / span 1; // Start at column 2
-  grid-row: 2 / span 1;    // Start at row 2
-  /* Existing styles */
+  // grid-column: 2 / span 1; // Start at column 2
+  // grid-row: 2 / span 1; // Start at row 2
+  // /* Existing styles */
 
   display: flex;
   border: 1px solid #e5e7eb;
@@ -26,9 +26,11 @@
   }
 
   &__leftContent {
-    flex-shrink: 0;
+    flex-direction: column;
+    flex: 2;
     display: flex;
-    justify-content: center;
+
+    justify-content: bottom;
   }
 
   &__icon {
@@ -41,11 +43,13 @@
     padding-left: 16px;
     display: flex;
     flex-direction: column;
-    flex: 1;
+    gap: 3%;
+    flex: 3;
   }
 
   &__title {
     font-size: 1.2rem;
+    text-align: center;
     line-height: 1.5rem;
     font-weight: 600;
     color: #111827;

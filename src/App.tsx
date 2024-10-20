@@ -3,11 +3,11 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 import Approvals from '@components/approvals/Approvals';
 import BalanceDashboard from '@components/balanceDashboard/balanceDashboard';
-import QuickAccess from '@components/QuickAccess/QuickAccess';
-import NewFeaturesWidget from '@components/NewFeaturesWidget/NewFeaturesWidget';
 import ExchangeRates from '@components/exchangeRates/exchangeRates';
-import DefaultLayout from '@components/layout/DefaultLayout';
 import Kittens from '@components/Kittens/Kittens';
+import DefaultLayout from '@components/layout/DefaultLayout';
+import NewFeaturesWidget from '@components/NewFeaturesWidget/NewFeaturesWidget';
+import QuickAccess from '@components/QuickAccess/QuickAccess';
 import { theme } from '@plugins/antDesign';
 
 import './App.css';

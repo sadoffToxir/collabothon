@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { Button, List, Modal } from 'antd';
 import { QRCodeCanvas } from 'qrcode.react';
+
 import { ExclamationCircleOutlined } from '@ant-design/icons';
 
 import './Approvals.scss';
 
 export const Approvals = () => {
   const [selectedApproval, setSelectedApproval] = useState<any>(null);
+  const [showQR, setShowQR] = useState(false);
 
   const showApprovalDetails = (approval: any) => {
     setSelectedApproval(approval);
@@ -21,6 +23,11 @@ export const Approvals = () => {
     // Handle the rejection logic here
     setSelectedApproval(null);
   };
+
+  const closeModal = () => {
+    setSelectedApproval(null);
+    setShowQR(false);
+  }
 
   const pendingApprovals = [
     // Original 9 approvals
@@ -146,7 +153,7 @@ export const Approvals = () => {
       <List
         dataSource={pendingApprovals}
         className="approvals-widget__list"
-        renderItem={(approval) => (
+        renderItem={(approval) => 
           <List.Item
             key={approval.id}
             onClick={() => showApprovalDetails(approval)}
@@ -157,88 +164,93 @@ export const Approvals = () => {
               title={approval.title}
               description={approval.description}
             />
-            {approval.amount && (
+            {approval.amount && 
               <div className="approval-item__amount">{approval.amount}</div>
-            )}
+            }
           </List.Item>
-        )}
+        }
       />
 
-      {selectedApproval && (
+      {selectedApproval && 
         <Modal
-        className="approval-details-modal"
-        visible={!!selectedApproval}
-        title={null} // No default title, we'll use a custom close icon
-        onCancel={() => setSelectedApproval(null)} // X button functionality
-        footer={null} // Custom footer
-      >
-        <div className="approval-modal-content">
-          {/* Custom Header with Close (X) button */}
-          <div className="modal-header">
-            <h1>{selectedApproval.title}</h1>
+          className="approval-details-modal"
+          visible={!!selectedApproval}
+          title={null} 
+          onCancel={closeModal} // X button functionality
+          footer={null} // Custom footer
+        >
+          <div className="approval-modal-content">
+            {/* Custom Header with Close (X) button */}
+            <div className="modal-header">
+              <h1>{selectedApproval.title}</h1>
           
-          </div>
+            </div>
       
-          {/* Divider */}
-          <div className="modal-divider"></div>
+            {/* Divider */}
+            <div className="modal-divider"></div>
       
-          {/* Main Content with QR code and details side-by-side */}
-          <div className="modal-body">
-            <div className="modal-content-container">
-              {/* Left Side - Detailed Information */}
-              <div className="modal-info">
-                <div className="modal-section">
-                  <p className="section-label">Description</p>
-                  <p>{selectedApproval.description}</p>
-                </div>
+            {/* Main Content with QR code and details side-by-side */}
+            <div className="modal-body">
+              <div className="modal-content-container">
+                {/* Left Side - Detailed Information */}
+                <div className="modal-info">
+                  <div className="modal-section">
+                    <p className="section-label">Description</p>
+                    <p>{selectedApproval.description}</p>
+                  </div>
       
-                {selectedApproval.amount && (
+                  {selectedApproval.amount && 
                   <div className="modal-section">
                     <p className="section-label">Amount</p>
                     <p>{selectedApproval.amount}</p>
                   </div>
-                )}
+                  }
       
-                {/* Additional relevant information */}
-                <div className="modal-section">
-                  <p className="section-label">Transaction Type</p>
-                  <p>Payment Order, Term Deposit, Money Market Loan, etc.</p>
+                  <div className="modal-section">
+                    <p className="section-label">Transaction Type</p>
+                    <p>Payment Order, Term Deposit, Money Market Loan, etc.</p>
+                  </div>
+      
+                  <div className="modal-section">
+                    <p className="section-label">Request Made By</p>
+                    <p>{selectedApproval.company} - {selectedApproval.requesterName}</p>
+                  </div>
+      
+                  <div className="modal-section">
+                    <p className="section-label">Created At</p>
+                    <p>{selectedApproval.created_at}</p>
+                  </div>
+      
+                  <div className="modal-section">
+                    <p className="section-label">Deadline</p>
+                    <p>{selectedApproval.deadline}</p>
+                  </div>
                 </div>
       
-                <div className="modal-section">
-                  <p className="section-label">Request Made By</p>
-                  <p>{selectedApproval.company} - {selectedApproval.requesterName}</p>
-                </div>
-      
-                <div className="modal-section">
-                  <p className="section-label">Created At</p>
-                  <p>{selectedApproval.created_at}</p>
-                </div>
-      
-                <div className="modal-section">
-                  <p className="section-label">Deadline</p>
-                  <p>{selectedApproval.deadline}</p>
-                </div>
-              </div>
-      
-              {/* Right Side - Smaller QR Code and Reject Button */}
-              <div className="qr-reject-container">
-                <QRCodeCanvas value={selectedApproval.url} size={100} />
-                <Button
-                  className="modal-button reject"
-                  onClick={handleReject}
-                >
+                <div className="qr-reject-container">
+                  <Button className="modal-button approve" onClick={() => setShowQR(true)}>
+                    Approve
+                  </Button>
+                  {showQR && 
+                  <>
+                    <p>Scan QR Code to Approve</p>
+                    <QRCodeCanvas value={selectedApproval.url} size={100} />
+                  </>
+                  
+                  }
+                  <Button
+                    className="modal-button reject"
+                    onClick={handleReject}
+                  >
                   Reject
-                </Button>
+                  </Button>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </Modal>
+        </Modal>
       
-    
-      
-      )}
+      }
     </div>
   );
 };
