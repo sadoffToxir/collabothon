@@ -2,26 +2,49 @@ import { ConfigProvider } from 'antd';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 import Approvals from '@components/approvals/Approvals';
+import BalanceDashboard from '@components/balanceDashboard/balanceDashboard';
 import QuickAccess from '@components/QuickAccess/QuickAccess';
 import NewFeaturesWidget from '@components/NewFeaturesWidget/NewFeaturesWidget';
-import BalanceDashboard from '@components/balanceDashboard/balanceDashboard';
 import ExchangeRates from '@components/exchangeRates/exchangeRates';
 import DefaultLayout from '@components/layout/DefaultLayout';
+import Kittens from '@components/Kittens/Kittens';
 import { theme } from '@plugins/antDesign';
 
 import './App.css';
-import Kittens from '@components/Kittens/Kittens';
 
 function App() {
   return (
-    <>
-      <ConfigProvider theme={theme}>
-        <Router>
-          <Routes>
-            {/* Other routes */}
-            <Route
-              path="/"
-              element={
+    <ConfigProvider theme={theme}>
+      <Router>
+        <Routes>
+          <Route
+            path="/approvals"
+            element={
+              <div className="w-full h-full bg-black flex justify-center items-center">
+                <Approvals />
+              </div>
+            }
+          />
+          <Route
+            path="/quick-access"
+            element={
+              <div className="w-full h-full bg-black flex justify-center items-center">
+                <QuickAccess />
+              </div>
+            }
+          />
+          <Route
+            path="/kittens"
+            element={
+              <div className="w-full h-full bg-black flex justify-center items-center">
+                <Kittens />
+              </div>
+            }
+          />
+          <Route
+            path="/"
+            element={
+              <div className="App">
                 <DefaultLayout>
                   <Approvals />
                   <QuickAccess />
@@ -30,12 +53,12 @@ function App() {
                   <ExchangeRates />
                   <Kittens />
                 </DefaultLayout>
-              }
-            />
-          </Routes>
-        </Router>
-      </ConfigProvider>
-    </>
+              </div>
+            }
+          />
+        </Routes>
+      </Router>
+    </ConfigProvider>
   );
 }
 
