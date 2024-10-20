@@ -1,48 +1,173 @@
 @import "@styles/_variables.scss";
 
-.approvals {
-	grid-column-start: 1;
-	grid-column-end: 2;
-	grid-row-start: 1;
-	grid-row-end: 3;
+.approvals-widget {
+  background-color: $bg-primary;
+  border-radius: 8px;
+  padding: 16px;
+  height: 100%; // Убедитесь, что высота 100%
+  overflow: auto; // Прокрутка при необходимости
 
-	display: flex;
-	flex-direction: column;
-	width: 400px;
-	height: 500px;
-	background-color: $bg-primary;
-	border-radius: 8px;
-	padding: 16px;
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
-	&__heading {
-		font-weight: 700;
-		padding: 10px 0;
-		margin: 0;
-	}
+    h2 {
+      margin: 0;
+      font-size: 24px;
+    }
+  }
 
-	&__items {
-		border-radius: 0 0 8px 8px;
-		height: 100%;
-		overflow: scroll;
-		position: relative;
+  &__list {
+    margin-top: 16px;
 
-		& > .ant-collapse {
-			background-color: transparent !important;
-			border-radius: 0;
-			border: none;
-		}
+    .approval-item {
+      cursor: pointer;
+      padding: 16px;
+      transition: background-color 0.2s;
 
-		& > .ant-collapse-item {
-			border-bottom: 1px solid black !important;
+      &:hover {
+        background-color: $bg-secondary;
+      }
 
-			&:last-child {
-				border: none;
-			}
+      .ant-list-item-meta {
+        align-items: center;
 
-			&:first-child {
-				border-top-left-radius: 0px;
-				border-top-right-radius: 0px;
-			}
-		}
-	}
+        .ant-list-item-meta-avatar {
+          margin-right: 16px;
+        }
+
+        .ant-list-item-meta-title {
+          font-size: 18px;
+          font-weight: 500;
+        }
+
+        .ant-list-item-meta-description {
+          color: $text-secondary;
+        }
+      }
+
+      .approval-item__amount {
+        font-size: 16px;
+        font-weight: 500;
+      }
+    }
+  }
+
+  /* Тонкий скроллбар без фонового цвета */
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+}
+
+.approval-details-modal {
+  .ant-modal-content {
+    border-radius: 20px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    padding: 0;
+    overflow: hidden;
+  }
+
+  /* Modal Header */
+  .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px;
+    background-color: #f7f7f7;
+    border-bottom: 1px solid #e8e8e8;
+
+    h1 {
+      font-size: 22px;
+      font-weight: 600;
+      color: #333;
+      margin: 0;
+    }
+
+    .modal-close-button {
+      background: none;
+      border: none;
+      cursor: pointer;
+
+      &:hover {
+        color: #ff4d4f; // Red color on hover for the X button
+      }
+    }
+  }
+
+  /* Divider */
+  .modal-divider {
+    height: 1px;
+    background-color: #e8e8e8;
+  }
+
+  /* Modal Body */
+  .modal-body {
+    padding: 24px;
+
+    .modal-content-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .modal-info {
+      flex: 1;
+      margin-right: 24px;
+
+      .modal-section {
+        margin-bottom: 16px;
+
+        .section-label {
+          font-weight: 600;
+          margin-bottom: 8px;
+          color: #333;
+          font-size: 16px;
+        }
+
+        p {
+          margin: 0;
+          font-size: 15px;
+          color: #555;
+        }
+      }
+    }
+
+    /* QR Code and Reject Button Section */
+    .qr-reject-container {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      canvas {
+        border-radius: 12px;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05);
+        margin-bottom: 8px;
+      }
+
+      .modal-button.reject {
+        background-color: #FF3B30;
+        color: #fff;
+        border: none;
+        padding: 8px 24px;
+        border-radius: 12px;
+        font-size: 16px;
+
+        &:hover {
+          background-color: #ff6154;
+        }
+      }
+    }
+  }
 }

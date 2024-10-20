@@ -1,10 +1,8 @@
 @import '@styles/_variables.scss';
 
 .quickAccess {
-  grid-column-start: 2;
-  grid-column-end: 3;
-  grid-row-start: 1;
-  grid-row-end: 2;
+  grid-column: 2 / span 1; // Start at column 2
+  grid-row: 1 / span 1;    // Start at row 1
 
   display: flex;
   flex-wrap: wrap; /* Added this line to allow wrapping */
